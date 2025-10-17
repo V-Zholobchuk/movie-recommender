@@ -1,16 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { FavoritesComponent } from './components/favorites/favorites.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'favorites', component: FavoritesComponent },
-  { path: '**', redirectTo: '' }
+  { path: '', redirectTo: 'finder', pathMatch: 'full' },
+  
+  { 
+    path: 'finder', 
+    loadChildren: () => import('./features/movie-finder/movie-finder.module').then(m => m.MovieFinderModule) 
+  },
+  { 
+    path: 'movie/:id', 
+    loadChildren: () => import('./features/movie-details/movie-details.module').then(m => m.MovieDetailsModule) 
+  },
+  { 
+    path: 'lists', 
+    loadChildren: () => import('./features/user-lists/user-lists.module').then(m => m.UserListsModule) 
+  },
+  
+  { path: '**', redirectTo: 'finder' } 
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

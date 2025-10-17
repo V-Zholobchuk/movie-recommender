@@ -1,0 +1,17 @@
+<div class="lists-page">
+  <h1>{{ 'LISTS.MY_FAVORITES' | translate }}</h1>
+
+  <div *ngIf="favoriteMovies.length > 0; else noFavorites">
+    <div class="movie-grid">
+      <app-movie-card *ngFor="let movie of favoriteMovies" [movie]="movie" (favoriteChanged)="loadFavorites()">
+      </app-movie-card>
+    </div>
+  </div>
+
+  <ng-template #noFavorites>
+    <div class="no-results">
+      <p>{{ 'LISTS.EMPTY_LIST' | translate }}</p>
+      <p>{{ 'LISTS.ADD_MOVIES_PROMPT' | translate }}</p>
+    </div>
+  </ng-template>
+</div>

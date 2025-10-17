@@ -1,0 +1,13 @@
+<div class="pagination-container" *ngIf="totalPages > 1">
+    <button class="pagination-btn" (click)="prevPage()" [disabled]="currentPage === 1">
+        ‹ {{ 'PAGINATION.PREVIOUS' | translate }}
+    </button>
+
+    <span class="pagination-info">
+        {{ 'PAGINATION.PAGE_INFO' | translate:{currentPage: currentPage, totalPages: totalPages} }}
+    </span>
+
+    <button class="pagination-btn" (click)="nextPage()" [disabled]="currentPage === totalPages">
+        {{ 'PAGINATION.NEXT' | translate }} ›
+    </button>
+</div>

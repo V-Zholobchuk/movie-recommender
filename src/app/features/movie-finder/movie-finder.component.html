@@ -1,0 +1,20 @@
+<div class="finder-page">
+  <app-movie-filters (filterChange)="onFilterChange($event)"></app-movie-filters>
+  <hr class="divider">
+
+  <div class="results-container">
+    <app-spinner *ngIf="isLoading"></app-spinner>
+
+    <div class="movie-grid" *ngIf="!isLoading && movies.length > 0">
+      <app-movie-card *ngFor="let movie of movies" [movie]="movie"></app-movie-card>
+    </div>
+
+    <app-pagination *ngIf="!isLoading && movies.length > 0" [currentPage]="currentPage" [totalPages]="totalPages"
+      (pageChange)="changePage($event)">
+    </app-pagination>
+
+    <div *ngIf="!isLoading && movies.length === 0" class="no-results">
+      <p>{{ 'FINDER.NO_MOVIES_FOUND' | translate }}</p>
+    </div>
+  </div>
+</div>

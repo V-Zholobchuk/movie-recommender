@@ -1,0 +1,41 @@
+<app-spinner *ngIf="isLoading"></app-spinner>
+
+<div class="details-container" *ngIf="!isLoading && movie">
+
+    <div class="poster">
+        <img [src]="movie.poster_path | imageUrl" [alt]="movie.title">
+    </div>
+
+    <div class="info">
+        <h1 class="title">{{ movie.title }} ({{ movie.release_date | date: 'yyyy' }})</h1>
+        <p class="tagline">{{ movie.tagline }}</p>
+        <div class="genres">
+            <span *ngFor="let genre of movie.genres" class="genre-tag">{{ genre.name }}</span>
+        </div>
+
+        <div class="stats">
+            <span class="rating">⭐ {{ movie.vote_average.toFixed(1) }}</span>
+            <span class="runtime">🕒 {{ 'DETAILS.RUNTIME_MINUTES' | translate:{value: movie.runtime} }}</span>
+        </div>
+
+        <h2>{{ 'DETAILS.OVERVIEW' | translate }}</h2>
+        <p class="overview">{{ movie.overview }}</p>
+    </div>
+
+
+</div>
+<div class="trailer-container" *ngIf="trailerUrl">
+    <iframe width="100%" height="100%" [src]="trailerUrl" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div>
+
+
+<div class="similar-movies-container" *ngIf="!isLoading && similarMovies.length > 0">
+    <h2>{{ 'DETAILS.SIMILAR_MOVIES' | translate }}</h2>
+    <div class="movie-grid">
+        <app-movie-card *ngFor="let similar of similarMovies" [movie]="similar">
+        </app-movie-card>
+    </div>
+</div>

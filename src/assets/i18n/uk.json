@@ -1,0 +1,30 @@
+{
+  "HEADER": {
+    "SEARCH_MOVIES": "Пошук фільмів",
+    "MY_LISTS": "Мої списки"
+  },
+  "FINDER": {
+    "SEARCH_BY_NAME": "Пошук за назвою:",
+    "SEARCH_PLACEHOLDER": "Введіть назву...",
+    "GENRE": "Жанр:",
+    "ALL_GENRES": "Всі жанри",
+    "YEAR": "Рік:",
+    "RATING": "Рейтинг (від {{value}}):",
+    "NO_MOVIES_FOUND": "Фільмів не знайдено. Спробуйте змінити фільтри або пошуковий запит."
+  },
+  "DETAILS": {
+    "OVERVIEW": "Опис",
+    "SIMILAR_MOVIES": "Схожі фільми",
+    "RUNTIME_MINUTES": "{{value}} хв."
+  },
+  "LISTS": {
+    "MY_FAVORITES": "Моє обране",
+    "EMPTY_LIST": "Ваш список обраних порожній.",
+    "ADD_MOVIES_PROMPT": "Поверніться на головну, щоб додати фільми."
+  },
+  "PAGINATION": {
+    "PREVIOUS": "Попередня",
+    "NEXT": "Наступна",
+    "PAGE_INFO": "Сторінка {{currentPage}} з {{totalPages}}"
+  }
+}

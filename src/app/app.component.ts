@@ -1,20 +1,31 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { MovieListComponent } from './components/movie-list/movie-list.component';
-import { RecommendationsComponent } from './components/recommendations/recommendations.component';
+import { ThemeService } from './core/services/theme.service';
+import { TranslateService } from '@ngx-translate/core'; 
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, CommonModule,MovieListComponent,RecommendationsComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'] 
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'movie-recommender';
   
-  selectedGenre: string = '';
-  movies: any[] = [];
-}
+  constructor(
+    public themeService: ThemeService,
+    public translate: TranslateService
+  ) {
+    translate.addLangs(['en', 'uk']);
+    translate.setDefaultLang('uk');
+    
+    const browserLang = translate.getBrowserLang();
+    translate.use(browserLang?.match(/en|uk/) ? browserLang : 'uk');
+  }
 
+  toggleTheme(): void {
+    this.themeService.toggleTheme();
+  }
+
+  switchLang(lang: string): void {
+    this.translate.use(lang);
+  }
+}

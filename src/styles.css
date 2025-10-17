@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+
+
+body.light-theme {
+  --background-color: #f4f4f4;
+  --text-color: #1a1a1a;
+  --card-background: #ffffff;
+  --header-background: #e9e9e9;
+  --primary-color: #007bff;
+  --border-color: #ddd;
+}
+
+body, body.dark-theme {
+  --background-color: #121212;
+  --text-color: #e0e0e0;
+  --card-background: #1e1e1e;
+  --header-background: #1a1a1a;
+  --primary-color: #64b5f6;
+  --border-color: #333;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}

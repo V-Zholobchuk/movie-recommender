@@ -1,13 +1,22 @@
-<div class="container">
-  <h1>🎬 Movie Recommender</h1>
-  <p>Обери жанр отримай рекомендацію фільму!</p>
+<header>
+  <nav>
+    <a routerLink="/finder">{{ 'HEADER.SEARCH_MOVIES' | translate }}</a>
+    <a routerLink="/lists">{{ 'HEADER.MY_LISTS' | translate }}</a>
+  </nav>
+
+  <div class="controls">
+    <div class="lang-switcher">
+      <button (click)="switchLang('uk')" [class.active]="translate.currentLang === 'uk'">УКР</button>
+      <button (click)="switchLang('en')" [class.active]="translate.currentLang === 'en'">ENG</button>
+    </div>
+    <div class="theme-switcher">
+      <button (click)="toggleTheme()">
+        {{ themeService.getCurrentTheme() === 'dark' ? '🌞' : '🌙' }}
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
   <router-outlet></router-outlet>
-
-  <app-movie-list (genreSelected)="selectedGenre = $event" (moviesLoaded)="movies = $event">
-  </app-movie-list>
-
-  <app-recommendations [selectedGenre]="selectedGenre" [allMovies]="movies">
-  </app-recommendations>
-
-
-</div>
+</main>

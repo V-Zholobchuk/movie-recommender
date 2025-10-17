@@ -1,0 +1,30 @@
+{
+  "HEADER": {
+    "SEARCH_MOVIES": "Search Movies",
+    "MY_LISTS": "My Lists"
+  },
+  "FINDER": {
+    "SEARCH_BY_NAME": "Search by name:",
+    "SEARCH_PLACEHOLDER": "Enter title...",
+    "GENRE": "Genre:",
+    "ALL_GENRES": "All Genres",
+    "YEAR": "Year:",
+    "RATING": "Rating (from {{value}}):",
+    "NO_MOVIES_FOUND": "No movies found. Try changing filters or your search query."
+  },
+  "DETAILS": {
+    "OVERVIEW": "Overview",
+    "SIMILAR_MOVIES": "Similar Movies",
+    "RUNTIME_MINUTES": "{{value}} min."
+  },
+  "LISTS": {
+    "MY_FAVORITES": "My Favorites",
+    "EMPTY_LIST": "Your favorites list is empty.",
+    "ADD_MOVIES_PROMPT": "Go back to the main page to add movies."
+  },
+"PAGINATION": {
+    "PREVIOUS": "Previous",
+    "NEXT": "Next",
+    "PAGE_INFO": "Page {{currentPage}} of {{totalPages}}"
+  }
+}
