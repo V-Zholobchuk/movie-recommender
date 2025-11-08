@@ -1,0 +1,168 @@
+<div class="quiz-container">
+
+    <div *ngIf="quizState.currentStep <= 7">
+
+        <div class="quiz-step" *ngIf="quizState.currentStep === 1">
+            <div class="question-header">
+                <h2>{{ 'QUIZ.STEP_1_TITLE' | translate }}</h2>
+            </div>
+            <div class="options-grid mood-options">
+                <div class="mood-option" (click)="selectMood('happy')">
+                    <div class="mood-icon">😊</div>
+                    <span>{{ 'QUIZ.MOOD_HAPPY' | translate }}</span>
+                </div>
+                <div class="mood-option" (click)="selectMood('neutral')">
+                    <div class="mood-icon">😐</div>
+                    <span>{{ 'QUIZ.MOOD_NEUTRAL' | translate }}</span>
+                </div>
+                <div class="mood-option" (click)="selectMood('sad')">
+                    <div class="mood-icon">😢</div>
+                    <span>{{ 'QUIZ.MOOD_SAD' | translate }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-step" *ngIf="quizState.currentStep === 2">
+            <div class="question-header">
+                <h2>{{ 'QUIZ.STEP_2_TITLE' | translate }}</h2>
+            </div>
+            <div class="options-grid list-options">
+                <div class="list-option" (click)="selectOccasion('solo')">
+                    <span class="checkbox-icon"></span> {{ 'QUIZ.OCCASION_SOLO' | translate }}
+                </div>
+
+                <div class="list-option" (click)="selectOccasion('friends')">
+                    <span class="checkbox-icon"></span> {{ 'QUIZ.OCCASION_FRIENDS' | translate }}
+                </div>
+                <div class="list-option" (click)="selectOccasion('partner')">
+                    <span class="checkbox-icon"></span> {{ 'QUIZ.OCCASION_PARTNER' | translate }}
+                </div>
+                <div class="list-option" (click)="selectOccasion('family')">
+                    <span class="checkbox-icon"></span> {{ 'QUIZ.OCCASION_FAMILY' | translate }}
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-step" *ngIf="quizState.currentStep === 3">
+            <div class="question-header">
+                <h2>{{ 'QUIZ.STEP_3_TITLE' | translate }}</h2>
+            </div>
+            <div class="options-grid genre-options">
+                <div *ngFor="let genre of genresList" class="list-option" [class.active]="isGenreSelected(genre.id)"
+                    (click)="toggleGenre(genre.id)">
+                    <span class="checkbox-icon"></span> {{ genre.name }}
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-step" *ngIf="quizState.currentStep === 4">
+            <div class="question-header">
+                <h2>{{ 'QUIZ.STEP_4_TITLE' | translate }}</h2>
+            </div>
+            <div class="options-grid list-options">
+                <div class="list-option" (click)="selectAge('any')">
+                    <span class="checkbox-icon"></span> {{ 'QUIZ.AGE_ANY' | translate }}
+                </div>
+                <div class="list-option" (click)="selectAge('5')">
+                    <span class="checkbox-icon"></span> {{ 'QUIZ.AGE_5_YEARS' | translate }}
+                </div>
+                <div class="list-option" (click)="selectAge('10')">
+                    <span class="checkbox-icon"></span> {{ 'QUIZ.AGE_10_YEARS' | translate }}
+                </div>
+                <div class="list-option" (click)="selectAge('25')">
+                    <span class="checkbox-icon"></span> {{ 'QUIZ.AGE_25_YEARS' | translate }}
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-step" *ngIf="quizState.currentStep === 5">
+            <div class="question-header">
+                <h2>{{ 'QUIZ.STEP_5_TITLE' | translate }}</h2>
+            </div>
+            <div class="options-grid list-options">
+                <div class="list-option" (click)="selectRatingImportance(true)">
+                    <span class="checkbox-icon"></span> {{ 'QUIZ.RATING_IMPORTANT_YES' | translate }}
+                </div>
+                <div class="list-option option-no" (click)="selectRatingImportance(false)">
+                    <span class="checkbox-icon"></span> {{ 'QUIZ.RATING_IMPORTANT_NO' | translate }}
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-step" *ngIf="quizState.currentStep === 6">
+            <div class="question-header">
+                <h2>{{ 'QUIZ.STEP_6_TITLE' | translate }}</h2>
+            </div>
+            <div class="options-grid list-options">
+                <div *ngFor="let rating of ratingOptions" class="list-option"
+                    [class.active]="isCertificationSelected(rating.key)" (click)="toggleCertification(rating.key)">
+                    <span class="checkbox-icon"></span> {{ rating.translationKey | translate }}
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-step" *ngIf="quizState.currentStep === 7">
+            <div class="question-header">
+                <h2>{{ 'QUIZ.STEP_7_TITLE' | translate }}</h2>
+            </div>
+            <div class="options-grid list-options">
+                <div *ngFor="let category of categoryOptions" class="list-option"
+                    [class.active]="isKeywordSelected(category.key)" (click)="toggleKeyword(category.key)">
+                    <span class="checkbox-icon"></span> {{ category.translationKey | translate }}
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation-buttons">
+            <button class="nav-button back-button" *ngIf="quizState.currentStep > 1" (click)="prevStep()">
+                ‹ {{ 'PAGINATION.PREVIOUS' | translate }}
+            </button>
+            <button class="nav-button next-button"
+                *ngIf="quizState.currentStep === 3 || quizState.currentStep === 6 || quizState.currentStep === 7"
+                (click)="nextStep()">
+                {{ 'PAGINATION.NEXT' | translate }} ›
+            </button>
+        </div>
+    </div>
+
+
+    <div class="quiz-step" *ngIf="quizState.currentStep === 8">
+
+        <div *ngIf="quizState.isLoadingResult" class="question-header">
+            <h2>{{ 'QUIZ.STEP_8_TITLE' | translate }}</h2>
+            <app-spinner></app-spinner>
+        </div>
+
+        <div *ngIf="!quizState.isLoadingResult && quizState.currentRecommendation">
+            <div class="question-header">
+                <h2>{{ 'QUIZ.STEP_8_TITLE' | translate }}</h2>
+            </div>
+
+            <div class="recommendation-card clickable" (click)="showDetails(quizState.currentRecommendation.id)">
+
+                <img [src]="quizState.currentRecommendation.poster_path | imageUrl"
+                    [alt]="quizState.currentRecommendation.title">
+                <div class="recommendation-info">
+                    <h3>{{ quizState.currentRecommendation.title }} ({{ quizState.currentRecommendation.release_date |
+                        date: 'yyyy' }})</h3>
+                    <p>{{ quizState.currentRecommendation.overview }}</p>
+                </div>
+            </div>
+
+            <button class="nav-button next-button result-button" (click)="showNextRecommendation()">
+                {{ 'QUIZ.SEEN_IT_NEXT' | translate }}
+            </button>
+        </div>
+
+        <div *ngIf="!quizState.isLoadingResult && quizState.noMoreResults">
+            <div class="question-header">
+                <h2>{{ 'QUIZ.NO_MORE_RESULTS' | translate }}</h2>
+            </div>
+            <button class="nav-button next-button result-button" (click)="startOver()">
+                {{ 'QUIZ.START_OVER' | translate }}
+            </button>
+        </div>
+
+    </div>
+
+</div>

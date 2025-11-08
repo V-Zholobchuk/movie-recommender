@@ -9,6 +9,8 @@ import { SharedModule } from '../../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 
 import { TranslateModule } from '@ngx-translate/core';
+
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 const routes: Routes = [
   { path: '', component: MovieFinderComponent }
 ];
@@ -23,7 +25,8 @@ const routes: Routes = [
     FormsModule, 
     SharedModule, 
     RouterModule.forChild(routes), 
-    TranslateModule
+    TranslateModule,
+    NgxSliderModule
   ]
 })
 export class MovieFinderModule { }

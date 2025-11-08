@@ -1,11 +1,13 @@
 import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 
+export type AppTheme = 'light' | 'dark';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
   private renderer: Renderer2;
-  private currentTheme: 'light' | 'dark' = 'dark';
+  private currentTheme: AppTheme = 'dark'; 
   private readonly THEME_KEY = 'app_theme';
 
   constructor(rendererFactory: RendererFactory2) {
@@ -14,25 +16,24 @@ export class ThemeService {
   }
 
   private loadTheme(): void {
-    const savedTheme = localStorage.getItem(this.THEME_KEY) as 'light' | 'dark';
-    this.setTheme(savedTheme || 'dark'); 
+    const savedTheme = localStorage.getItem(this.THEME_KEY) as AppTheme;
+    this.setTheme(savedTheme === 'light' ? 'light' : 'dark');
   }
 
-  setTheme(theme: 'light' | 'dark'): void {
+  setTheme(theme: AppTheme): void {
     const oldTheme = this.currentTheme;
     this.currentTheme = theme;
 
-    this.renderer.removeClass(document.body, `${oldTheme}-theme`);
+    this.renderer.removeClass(document.body, 'light-theme');
+    this.renderer.removeClass(document.body, 'dark-theme');
+    this.renderer.removeClass(document.body, 'dim-theme');
+    
     this.renderer.addClass(document.body, `${theme}-theme`);
 
     localStorage.setItem(this.THEME_KEY, theme);
   }
 
-  toggleTheme(): void {
-    this.setTheme(this.currentTheme === 'light' ? 'dark' : 'light');
-  }
-
-  getCurrentTheme(): 'light' | 'dark' {
+  getCurrentTheme(): AppTheme {
     return this.currentTheme;
   }
 }

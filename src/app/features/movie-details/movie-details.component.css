@@ -97,3 +97,135 @@
   width: 100%;
   height: 100%;
 }
+
+.details-page-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  padding: 10px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.nav-button:hover {
+  opacity: 1;
+}
+
+.back-button {
+  display: inline-block;
+
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  gap: 20px; 
+  margin-bottom: 5px;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+
+
+.heart-container {
+  --heart-color: var(--text-color);
+  
+  position: relative;
+  width: 50px;
+  height: 50px;
+  transition: .3s;
+  flex-shrink: 0; 
+}
+
+.heart-container .checkbox {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 20;
+  cursor: pointer;
+}
+
+.heart-container .svg-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heart-container .svg-outline,
+.heart-container .svg-filled {
+  fill: var(--heart-color);
+  position: absolute;
+  width: 80%; 
+  height: 80%;
+}
+
+.heart-container .svg-filled {
+  animation: keyframes-svg-filled 1s;
+  display: none;
+}
+
+.heart-container .svg-celebrate {
+  position: absolute;
+  animation: keyframes-svg-celebrate .5s;
+  animation-fill-mode: forwards;
+  display: none;
+  stroke-width: 2px;
+}
+
+.heart-container .checkbox:checked~.svg-container .svg-filled {
+  display: block;
+  fill: var(--danger-color); 
+}
+
+.heart-container .checkbox:checked~.svg-container .svg-outline {
+  fill: var(--danger-color);
+}
+
+.heart-container .checkbox:checked~.svg-container .svg-celebrate {
+  display: block;
+  stroke: var(--danger-color);
+  fill: var(--danger-color);
+}
+
+@keyframes keyframes-svg-filled {
+  0% { transform: scale(0); }
+  25% { transform: scale(1.2); }
+  50% { transform: scale(1); filter: brightness(1.5); }
+}
+
+@keyframes keyframes-svg-celebrate {
+  0% { transform: scale(0); }
+  50% { opacity: 1; filter: brightness(1.5); }
+  100% { transform: scale(1.4); opacity: 0; display: none; }
+}
+
+
+
+
+@media (min-width: 1024px) {
+  .back-button {
+    position: fixed;
+    top: 60px;       
+    left: 30px;      
+    z-index: 50;    
+    
+    
+  }
+  
+}

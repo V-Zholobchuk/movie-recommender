@@ -1,7 +1,8 @@
 {
   "HEADER": {
     "SEARCH_MOVIES": "Search Movies",
-    "MY_LISTS": "My Lists"
+    "MY_LISTS": "Favorites",
+    "AI_RECOMMEND": "AI Recommender"
   },
   "FINDER": {
     "SEARCH_BY_NAME": "Search by name:",
@@ -9,8 +10,15 @@
     "GENRE": "Genre:",
     "ALL_GENRES": "All Genres",
     "YEAR": "Year:",
-    "RATING": "Rating (from {{value}}):",
-    "NO_MOVIES_FOUND": "No movies found. Try changing filters or your search query."
+    "RATING": "Rating:",
+    "NO_MOVIES_FOUND": "No movies found. Try changing filters or your search query.",
+
+    "SORT_BY": "Sort by:",
+    "SORT_OPTIONS": {
+      "POPULARITY_DESC": "Popularity (Desc)",
+      "RATING_DESC": "Rating (Desc)",
+      "RELEASE_DATE_DESC": "Release Date (Desc)"
+    }
   },
   "DETAILS": {
     "OVERVIEW": "Overview",
@@ -23,8 +31,53 @@
     "ADD_MOVIES_PROMPT": "Go back to the main page to add movies."
   },
 "PAGINATION": {
-    "PREVIOUS": "Previous",
+    "PREVIOUS": "Back",
     "NEXT": "Next",
     "PAGE_INFO": "Page {{currentPage}} of {{totalPages}}"
+  },
+
+  "QUIZ": {
+    "STEP_1_TITLE": "1. How are you today?",
+    "MOOD_HAPPY": "Happy",
+    "MOOD_NEUTRAL": "Neutral",
+    "MOOD_SAD": "Sad",
+    "STEP_2_TITLE": "2. What comes closest to your occasion?",
+    "OCCASION_SOLO": "Just watching a movie by myself",
+    "OCCASION_FRIENDS": "Movie Night with friends",
+    "OCCASION_PARTNER": "Date Night with boyfriend or girlfriend",
+    "OCCASION_FAMILY": "Watching a movie with family",
+
+    "STEP_3_TITLE": "3. Please choose any genre you're interested in",
+
+    "STEP_4_TITLE": "4. How old would you like the movie to be?",
+    "AGE_ANY": "Doesn't matter",
+    "AGE_5_YEARS": "Published in the last 5 years",
+    "AGE_10_YEARS": "Published in the last 10 years",
+    "AGE_25_YEARS": "Published in the last 25 years",
+    "STEP_5_TITLE": "5. Is the age-appropriateness rating of the movie important to you?",
+    "RATING_IMPORTANT_YES": "Yes",
+    "RATING_IMPORTANT_NO": "No",
+
+    "STEP_6_TITLE": "Please select all MPAA ratings that you're okay with",
+    "MPAA_G": "G-Rated: All ages admitted",
+    "MPAA_PG": "PG-Rated: Some material may not be suitable for children",
+    "MPAA_PG13": "PG-13-Rated: Some material may be inappropriate for children under 13",
+    "MPAA_R": "R-Rated: Under 17 requires accompanying parent or adult guardian",
+
+    "STEP_7_TITLE": "6. Please select any other category you're interested in",
+    "CATEGORY_NO_PREFERENCE": "I don't have a preference",
+    "CATEGORY_TRUE_STORY": "Movies based on a true story",
+    "CATEGORY_LIFE_CHANGING": "Movies that may change the way you look at life",
+    "CATEGORY_SPY_COP": "Spy Movies and Cop Movies",
+    "CATEGORY_SPACE": "Space Movies",
+    "CATEGORY_HEIST": "Heist Movies",
+    "CATEGORY_BOOK": "Movies based on a book",
+    "CATEGORY_IMDB_TOP": "IMDb Top 250 Movies",
+
+    "STEP_8_TITLE": "Here is what we recommend for you:",
+    "SEEN_IT_NEXT": "Seen it, next one",
+    "NO_MORE_RESULTS": "Sorry, no more results found for your criteria.",
+    "START_OVER": "Start Over"
   }
+
 }

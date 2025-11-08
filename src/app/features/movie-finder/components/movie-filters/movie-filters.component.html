@@ -2,27 +2,51 @@
 
   <div class="filter-item">
     <label for="search">{{ 'FINDER.SEARCH_BY_NAME' | translate }}</label>
-    <input type="text" id="search" [placeholder]="'FINDER.SEARCH_PLACEHOLDER' | translate" [(ngModel)]="searchQuery"
-      (ngModelChange)="applyFilters()">
+    <input type="text" id="search" [placeholder]="'FINDER.SEARCH_PLACEHOLDER' | translate"
+      [(ngModel)]="finderState.filters.query" (ngModelChange)="onOtherFilterChange()">
   </div>
 
   <div class="filter-item">
     <label for="genre">{{ 'FINDER.GENRE' | translate }}</label>
-    <select id="genre" [(ngModel)]="selectedGenre" (ngModelChange)="applyFilters()">
+    <select id="genre" [(ngModel)]="finderState.filters.genre" (ngModelChange)="onOtherFilterChange()">
       <option value="">{{ 'FINDER.ALL_GENRES' | translate }}</option>
       <option *ngFor="let genre of genres" [value]="genre.id">{{ genre.name }}</option>
     </select>
   </div>
 
-  <div class="filter-item">
-    <label for="year">{{ 'FINDER.YEAR' | translate }}</label>
-    <input type="number" id="year" [placeholder]="'2024'" [(ngModel)]="selectedYear" (ngModelChange)="applyFilters()">
+  <div class="filter-item year-range">
+    <label>{{ 'FINDER.YEAR' | translate }}</label>
+    <div class="year-range-container">
+
+      <select class="year-select" [(ngModel)]="finderState.filters.yearFrom" (ngModelChange)="onYearSelectChange()">
+        <option *ngFor="let year of yearOptions" [ngValue]="year">{{ year }}</option>
+      </select>
+
+      <ngx-slider [(value)]="finderState.filters.yearFrom" [(highValue)]="finderState.filters.yearTo"
+        [options]="yearSliderOptions" (userChange)="onSliderChange()">
+      </ngx-slider>
+
+      <select class="year-select" [(ngModel)]="finderState.filters.yearTo" (ngModelChange)="onYearSelectChange()">
+        <option *ngFor="let year of yearOptions" [ngValue]="year">{{ year }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="filter-item rating-slider">
+    <label for="rating">{{ 'FINDER.RATING' | translate:{value: finderState.filters.rating.toFixed(1)} }}</label>
+    <ngx-slider [(value)]="finderState.filters.rating" [options]="ratingSliderOptions" (userChange)="onSliderChange()">
+    </ngx-slider>
+
+
   </div>
 
   <div class="filter-item">
-    <label for="rating">{{ 'FINDER.RATING' | translate:{value: selectedRating} }}</label>
-    <input type="range" id="rating" min="0" max="10" step="0.5" [(ngModel)]="selectedRating"
-      (ngModelChange)="applyFilters()">
+    <label for="sort-by">{{ 'FINDER.SORT_BY' | translate }}</label>
+    <select id="sort-by" [(ngModel)]="finderState.filters.sortBy" (ngModelChange)="onOtherFilterChange()">
+      <option value="popularity.desc">{{ 'FINDER.SORT_OPTIONS.POPULARITY_DESC' | translate }}</option>
+      <option value="vote_average.desc">{{ 'FINDER.SORT_OPTIONS.RATING_DESC' | translate }}</option>
+      <option value="primary_release_date.desc">{{ 'FINDER.SORT_OPTIONS.RELEASE_DATE_DESC' | translate }}</option>
+    </select>
   </div>
 
 </div>

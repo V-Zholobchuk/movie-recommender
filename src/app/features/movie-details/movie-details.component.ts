@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router'; 
 import { ApiService } from '../../core/services/api.service';
 import { finalize } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
-// 1. Імпортуємо DomSanitizer
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Location } from '@angular/common';
+import { StorageService } from '../../core/services/storage.service'; 
 
 @Component({
   selector: 'app-movie-details',
@@ -17,12 +18,16 @@ export class MovieDetailsComponent implements OnInit {
   similarMovies: any[] = [];
   isLoading: boolean = true;
   trailerUrl: SafeResourceUrl | null = null; 
+  isFavorite: boolean = false; 
 
   constructor(
     private route: ActivatedRoute,
     private apiService: ApiService,
     private translate: TranslateService,
-    private sanitizer: DomSanitizer 
+    private sanitizer: DomSanitizer,
+    private location: Location,
+    private router: Router, 
+    private storageService: StorageService
   ) { }
 
   ngOnInit(): void {
@@ -45,21 +50,23 @@ export class MovieDetailsComponent implements OnInit {
     this.isLoading = true;
     this.movie = null;
     this.similarMovies = [];
-    this.trailerUrl = null; 
+    this.trailerUrl = null;
     window.scrollTo(0, 0);
+
+    this.isFavorite = this.storageService.isFavorite(movieId);
 
     this.apiService.getMovieDetails(movieId)
       .pipe(finalize(() => this.isLoading = false))
       .subscribe((response: any) => {
         this.movie = response;
         this.loadSimilarMovies(movieId);
-        this.loadTrailer(movieId); 
+        this.loadTrailer(movieId);
       });
   }
 
   loadSimilarMovies(movieId: number): void {
     this.apiService.getSimilarMovies(movieId).subscribe((response: any) => {
-      this.similarMovies = response.results.slice(0, 6);
+      this.similarMovies = response.results.slice(0, 8);
     });
   }
 
@@ -68,11 +75,25 @@ export class MovieDetailsComponent implements OnInit {
       const trailer = response.results.find(
         (video: any) => video.site === 'YouTube' && video.type === 'Trailer'
       );
-      
       if (trailer) {
         const videoUrl = `https://www.youtube.com/embed/${trailer.key}`;
         this.trailerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
       }
     });
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
+
+  toggleFavorite(event: Event): void {
+    event.stopPropagation(); 
+    
+    if (this.isFavorite) {
+      this.storageService.removeFavorite(this.movie.id);
+    } else {
+      this.storageService.addFavorite(this.movie);
+    }
+    this.isFavorite = !this.isFavorite;
   }
 }

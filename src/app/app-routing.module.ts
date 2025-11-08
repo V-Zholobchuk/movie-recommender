@@ -8,6 +8,12 @@ const routes: Routes = [
     path: 'finder', 
     loadChildren: () => import('./features/movie-finder/movie-finder.module').then(m => m.MovieFinderModule) 
   },
+  
+{
+path: 'quiz', 
+    loadChildren: () => import('./features/quiz/quiz.module').then(m => m.QuizModule) 
+  },
+
   { 
     path: 'movie/:id', 
     loadChildren: () => import('./features/movie-details/movie-details.module').then(m => m.MovieDetailsModule) 
@@ -18,6 +24,9 @@ const routes: Routes = [
   },
   
   { path: '**', redirectTo: 'finder' } 
+
+
+  
 ];
 
 @NgModule({

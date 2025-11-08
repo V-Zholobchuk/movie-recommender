@@ -1,0 +1,213 @@
+.quiz-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  /* 👇 Зміни тут: Використовуємо змінні 👇 */
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  border-radius: 8px;
+}
+
+.question-header {
+  padding: 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.question-header h2 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.options-grid {
+  display: grid;
+  gap: 20px;
+}
+
+/* --- Стилі для Кроку 1 (Настрій) --- */
+.mood-options {
+  grid-template-columns: repeat(3, 1fr); 
+}
+
+.mood-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.mood-option:hover {
+  background-color: var(--header-background); /* Змінено для кращого ефекту */
+  border-color: var(--primary-color);
+}
+
+.mood-icon {
+  font-size: 6rem;
+  line-height: 1;
+}
+
+.mood-option span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* --- Стилі для Кроку 2 (Список) --- */
+.list-options {
+  grid-template-columns: 1fr;
+}
+
+.list-option {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+  font-size: 1.2rem;
+  text-align: left;
+}
+
+.list-option:hover {
+  background-color: var(--header-background); /* Змінено для кращого ефекту */
+  border-color: var(--primary-color);
+}
+
+.checkbox-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--text-color);
+  border-radius: 3px;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+/* Стиль для "обраного" елемента */
+.list-option.active {
+  border-color: var(--primary-color);
+}
+
+.list-option.active .checkbox-icon {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%3E%3Cpath%20fill%3D%22%23ffffff%22%20d%3D%22M173.898%20439.404l-166.4-166.4c-9.997-9.997-9.997-26.206%200-36.204l36.203-36.204c9.997-9.998%2026.207-9.998%2036.204%200L192%20312.69%20432.095%2072.596c9.997-9.997%2026.207-9.997%2036.204%200l36.203%2036.204c9.997%209.997%209.997%2026.206%200%2036.204l-294.4%20294.401c-9.998%209.997-26.207%209.997-36.204-.001z%22%2F%3E%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 12px 12px;
+}
+
+.question-header .subtitle {
+  font-size: 1rem;
+  opacity: 0.8;
+  margin: 5px 0 0 0;
+}
+
+.genre-options {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* --- Стилі для Кроку 5 (Червона кнопка) --- */
+.list-option.option-no {
+  /* 👇 Зміни тут: Використовуємо змінні 👇 */
+  background-color: var(--danger-background);
+  border-color: var(--danger-color);
+}
+
+.list-option.option-no:hover {
+  background-color: var(--danger-color);
+  border-color: var(--danger-color);
+  color: #fff; /* Робимо текст білим для контрасту */
+}
+
+/* --- Кнопки Навігації --- */
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.nav-button:hover {
+  opacity: 1;
+}
+
+.next-button {
+  margin-left: auto;
+}
+
+/* --- Стилі для Кроку 8 (Результати) --- */
+.recommendation-card {
+  display: flex;
+  gap: 20px;
+  background-color: var(--card-background); /* Вже було, але переконуємось */
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  align-items: flex-start;
+}
+
+.recommendation-card img {
+  width: 200px;
+  border-radius: 8px;
+}
+
+.recommendation-info h3 {
+  margin-top: 0;
+  font-size: 1.8rem;
+}
+
+.recommendation-info p {
+  font-size: 1rem;
+  opacity: 0.9;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.result-button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 15px;
+  background-color: var(--primary-color);
+  /* 👇 Зміни тут: Контрастний колір для кнопки 👇 */
+  color: var(--header-background);
+  border-radius: 8px;
+  font-size: 1.2rem;
+  opacity: 1;
+  border: none;
+}
+
+.result-button:hover {
+  opacity: 0.8;
+}
+
+/* Робимо картку результату клікабельною */
+.recommendation-card.clickable {
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.recommendation-card.clickable:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}

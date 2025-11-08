@@ -1,32 +1,23 @@
-/* Загальний контейнер сторінки для центрування та відступів */
 .finder-page {
-  max-width: 1200px; /* Обмежуємо ширину на великих екранах */
-  margin: 0 auto; /* Центруємо блок */
+  max-width: 1200px; 
+  margin: 0 auto; 
   padding: 20px;
 }
 
-/* Наша сітка для карток фільмів */
 .movie-grid {
-  display: grid; /* Вмикаємо режим сітки */
+  display: grid; 
   
-  /* Це магія для адаптивності:
-    - auto-fill: заповнювати рядок стількома колонками, скільки влізе.
-    - minmax(200px, 1fr): кожна колонка буде мінімум 200px,
-      але може розтягуватися, щоб зайняти вільне місце.
-  */
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   
-  gap: 20px; /* Відстань між картками */
+  gap: 20px; 
 }
 
-/* Стиль для повідомлення "Нічого не знайдено" */
 .no-results {
   text-align: center;
   color: #888;
   padding: 50px 0;
 }
 
-/* Розділювач */
 .divider {
   border: none;
   border-top: 1px solid #333;
