@@ -7,12 +7,15 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { ImageUrlPipe } from './pipes/image-url.pipe';
 
 import { TranslateModule } from '@ngx-translate/core';
+import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switcher.component'; 
+
 @NgModule({
   declarations: [
     MovieCardComponent,
     SpinnerComponent,
     PaginationComponent, 
-    ImageUrlPipe
+    ImageUrlPipe,
+    ThemeSwitcherComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +26,8 @@ import { TranslateModule } from '@ngx-translate/core';
     SpinnerComponent,
     PaginationComponent, 
     ImageUrlPipe,
-    CommonModule
+    CommonModule,
+    ThemeSwitcherComponent
   ]
 })
 export class SharedModule { }
