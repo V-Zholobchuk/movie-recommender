@@ -156,14 +156,12 @@ select option:checked {
 }
 
 @media (max-width: 800px) {
-  /* Показуємо на мобільному */
   .close-filters-btn {
     display: block;
     position: absolute;
     top: 15px;
     right: 15px;
     
-    /* Стилі "скляної" кнопки */
     backdrop-filter: blur(12px);
     background-color: var(--card-background);
     border: 1px solid var(--border-color);
@@ -171,10 +169,9 @@ select option:checked {
     border-radius: 50%;
     
     width: 40px;
-    height: 40px;
+    height: 48px;
     cursor: pointer;
     
-    /* Центруємо іконку "X" */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -187,6 +184,6 @@ select option:checked {
   }
 
   .filters-container {
-    padding-top: 70px; 
+    padding-top: 55px; 
   }
 }
