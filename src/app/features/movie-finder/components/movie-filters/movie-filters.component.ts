@@ -11,6 +11,7 @@ import { FinderStateService } from '../../../../core/services/finder-state.servi
   templateUrl: './movie-filters.component.html',
   styleUrls: ['./movie-filters.component.css']
 })
+
 export class MovieFiltersComponent implements OnInit, OnDestroy {
 
   
@@ -37,6 +38,8 @@ export class MovieFiltersComponent implements OnInit, OnDestroy {
 
   private debounceSubject = new Subject<void>();
   private destroy$ = new Subject<void>();
+
+@Output() closeFilters = new EventEmitter<void>();
 
   constructor(
     private apiService: ApiService,
@@ -92,5 +95,8 @@ export class MovieFiltersComponent implements OnInit, OnDestroy {
   applyFilters(): void {
    
     this.filterChange.emit(this.finderState.filters);
+  }
+  onClose(): void {
+    this.closeFilters.emit();
   }
 }

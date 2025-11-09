@@ -1,20 +1,31 @@
 <div class="finder-page">
-  <app-movie-filters (filterChange)="onFilterChange($event)"></app-movie-filters>
+
+  <button class="filter-toggle-btn" (click)="toggleFiltersPanel()">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round"
+        d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+    </svg>
+    <span>{{ 'FINDER.FILTER' | translate }}</span> </button>
+
+  <div class="filter-panel" [class.is-visible]="isFiltersVisible">
+    <app-movie-filters (filterChange)="onFilterChange($event)" (closeFilters)="toggleFiltersPanel()">
+    </app-movie-filters>
+  </div>
+
+
   <hr class="divider">
 
   <div class="results-container">
     <app-spinner *ngIf="isLoading"></app-spinner>
-
     <div class="movie-grid" *ngIf="!isLoading && movies.length > 0">
       <app-movie-card *ngFor="let movie of movies" [movie]="movie"></app-movie-card>
     </div>
-
     <app-pagination *ngIf="!isLoading && movies.length > 0" [currentPage]="currentPage" [totalPages]="totalPages"
       (pageChange)="changePage($event)">
     </app-pagination>
-
     <div *ngIf="!isLoading && movies.length === 0" class="no-results">
       <p>{{ 'FINDER.NO_MOVIES_FOUND' | translate }}</p>
     </div>
   </div>
+
 </div>

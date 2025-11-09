@@ -12,6 +12,7 @@
     "YEAR": "Year:",
     "RATING": "Rating:",
     "NO_MOVIES_FOUND": "No movies found. Try changing filters or your search query.",
+"FILTER":"Filter",
 
     "SORT_BY": "Sort by:",
     "SORT_OPTIONS": {

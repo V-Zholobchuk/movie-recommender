@@ -3,7 +3,6 @@
   flex-wrap: wrap;
   gap: 20px 30px; 
   padding: 20px;
-  
 
 }
 
@@ -151,4 +150,43 @@ select option {
 select option:checked {
   background-color: var(--primary-color);
   color: #ffffff;
+}
+.close-filters-btn {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  /* Показуємо на мобільному */
+  .close-filters-btn {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    
+    /* Стилі "скляної" кнопки */
+    backdrop-filter: blur(12px);
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    
+    /* Центруємо іконку "X" */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .close-filters-btn svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--text-color);
+  }
+
+  .filters-container {
+    padding-top: 70px; 
+  }
 }

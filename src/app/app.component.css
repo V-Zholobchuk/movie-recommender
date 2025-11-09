@@ -60,4 +60,56 @@ nav a:hover {
   border-color: var(--primary-color);
 }
 
+@media (max-width: 768px) {
+  header {
+    width: 100%;
+    box-sizing: border-box; 
+    justify-content: center;
+    
+    gap: 10px; 
+    padding: 10px; 
+  }
 
+  nav {
+    width: 100%;
+    justify-content: start;
+    order: 1; 
+    flex-wrap: wrap; 
+    
+    gap: 12px;
+  }
+
+  .controls {
+    width: 100%;
+    justify-content: end; 
+    order: 1; 
+    flex-wrap: wrap; 
+    
+    gap: 15px; 
+  }
+
+  nav a {
+    font-size: 1rem;
+    padding: 0 5px; 
+  }
+}
+
+@media (max-width: 650px) {
+  header {
+    padding: 10px;
+    gap: 10px; 
+  }
+
+  nav {
+        gap: 2px; 
+}
+}
+@media (max-width: 450px) {
+  header {
+    padding: 10px;
+    gap: 10px; 
+  }
+
+  nav {
+flex-direction: column;}
+}

@@ -9,12 +9,12 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./movie-finder.component.css']
 })
 export class MovieFinderComponent implements OnInit {
-
   movies: any[] = [];
   isLoading: boolean = false;
   currentPage: number = 1;
   totalPages: number = 0;
   private currentFilters: any = {};
+public isFiltersVisible: boolean = false;
 
   constructor(
     private apiService: ApiService,
@@ -25,6 +25,10 @@ export class MovieFinderComponent implements OnInit {
     this.translate.onLangChange.subscribe(() => {
       this.fetchMovies();
     });
+  }
+  
+  toggleFiltersPanel(): void {
+    this.isFiltersVisible = !this.isFiltersVisible;
   }
 
   onFilterChange(filters: any): void {
